@@ -14,10 +14,6 @@ exports.update = (req, res) => {
     return res.send({message: 'update handler'})
 }
 
-exports.update = (req, res) => {
-    return res.send({message: 'update handler'})
-}
-
 exports.delete = (req, res) => {
     return res.send({message: 'delete handler'})
 }
