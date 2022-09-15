@@ -1,13 +1,28 @@
 const express = require('express');
-const cors  = require('cors');
+const cors = require('cors');
 
 const app = express()
+
+const contactController = require('./controllers/contact.controller')
 
 app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.json({'message': 'Welcome'})
+    res.json({ 'message': 'Welcome' })
 });
+
+app.route('/api/contacts')
+    .get(contactController.list)
+    .post(contactController.create)
+    .delete(contactController.deleteAll)
+
+app.route('/api/contacts/favorite')
+    .get(contactController.findAllFavorite)
+
+app.route('/api/contacts/:id')
+    .get(contactController.read)
+    .put(contactController.update)
+    .delete(contactController.delete)
 
 module.exports = app;
